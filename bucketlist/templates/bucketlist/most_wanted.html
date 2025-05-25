@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Most Wanted Travel Places</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      color: #f1f1f1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem;
+    }
+
+    h2 {
+      font-size: 2rem;
+      color: #ffcc00;
+      text-shadow: 2px 2px 10px #000;
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+
+    ul.place-list {
+      list-style: none;
+      padding: 0;
+      max-width: 800px;
+      width: 100%;
+    }
+
+    li.place-card {
+      background: rgba(255, 255, 255, 0.08);
+      border-left: 6px solid #ff5722;
+      border-radius: 12px;
+      padding: 1.2rem;
+      margin-bottom: 1.2rem;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+      transition: all 0.3s ease;
+    }
+
+    li.place-card:hover {
+      transform: translateY(-4px);
+      background-color: rgba(255, 255, 255, 0.12);
+    }
+
+    li.place-card strong {
+      font-size: 1.3rem;
+      color: #fff;
+    }
+
+    li.place-card small {
+      font-size: 0.95rem;
+      color: #bbb;
+      display: block;
+      margin: 0.3rem 0 0.6rem;
+    }
+
+    li.place-card p {
+      font-size: 1rem;
+      color: #ddd;
+      margin: 0;
+    }
+
+    p {
+      font-size: 1.1rem;
+      color: #ccc;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Most Wanted Travel Places</h2>
+
+  {% if places %}
+    <ul class="place-list">
+      {% for place in places %}
+        <li class="place-card">
+          <strong>{{ place.title }}</strong> — {{ place.visit_count }} submissions <br>
+          <small>{{ place.location }}</small>
+          <p>{{ place.description }}</p>
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>No places have been submitted yet.</p>
+  {% endif %}
+
+</body>
+</html>

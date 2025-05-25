@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Visit Submissions</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      color: #f1f1f1;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem;
+    }
+
+    h2 {
+      font-size: 2rem;
+      margin-bottom: 2rem;
+      color: #ffcc00;
+      text-shadow: 2px 2px 10px #000;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      max-width: 600px;
+      width: 100%;
+    }
+
+    li {
+      background-color: rgba(255, 255, 255, 0.1);
+      border-left: 6px solid #ffcc00;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+      transition: transform 0.2s ease, background-color 0.3s;
+    }
+
+    li:hover {
+      transform: scale(1.02);
+      background-color: rgba(255, 255, 255, 0.15);
+    }
+
+    strong {
+      font-size: 1.2rem;
+      color: #fff;
+    }
+
+    small {
+      color: #bbb;
+      display: block;
+      margin-top: 0.5rem;
+    }
+
+    p {
+      font-size: 1.1rem;
+      color: #ddd;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>My Visit Submissions</h2>
+
+  {% if submissions %}
+    <ul>
+      {% for submission in submissions %}
+        <li>
+          <strong>{{ submission.place.title }}</strong> — {{ submission.reason }} <br>
+          <small>Submitted on {{ submission.submitted_on }}</small>
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>You haven’t submitted any places yet.</p>
+  {% endif %}
+
+</body>
+</html>

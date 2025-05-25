@@ -1,0 +1,30 @@
+{% extends "bucketlist/base.html" %}
+{% block title %}My Travel Bucket List{% endblock %}
+
+{% block content %}
+<h1 class="mb-4">My Travel Bucket List</h1>
+<a href="{% url 'add_place' %}" class="btn btn-primary mb-3">Add New Place</a>
+
+<div class="row">
+    {% for place in places %}
+    <div class="col-md-6 col-lg-4 mb-4">
+        <div class="card h-100">
+            <div class="card-body d-flex flex-column">
+                <h5 class="card-title">{{ place.title }}</h5>
+                <h6 class="card-subtitle mb-2 text-muted">{{ place.location }}</h6>
+                <p class="card-text">{{ place.description }}</p>
+                <p class="text-muted mt-auto"><small>Added on: {{ place.added_on|date:"M d, Y" }}</small></p>
+            </div>
+        </div>
+    </div>
+   
+
+    {% empty %}
+    <p>No places added yet.</p>
+    {% endfor %}
+    <a href="{% url 'my_submissions' %}" class="btn btn-primary">My Submissions</a>
+    <a href="{% url 'submit_visit' %}" class="btn btn-success">Submit a Visit</a>
+    <a href="{% url 'most_wanted' %}" class="btn btn-warning">Most Wanted</a>
+</div>
+
+{% endblock %}
